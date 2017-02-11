@@ -3,6 +3,9 @@ namespace AndreasWolf\BackendDemo\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class RoutedModuleController
 {
@@ -20,8 +23,13 @@ class RoutedModuleController
      */
     public function processRequest(ServerRequestInterface $request, ResponseInterface $response)
     {
+        /** @var StandaloneView $template */
+        $template = GeneralUtility::makeInstance(StandaloneView::class);
+        $template->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('backend_demo',
+            'Resources/Private/Templates/BackendDemo/Main.html'));
+
         // The response object is immutable as per PSR-7. Therefore we must return it here
-        $response->getBody()->write('This is a demo module');
+        $response->getBody()->write($template->render());
         return $response;
     }
 
