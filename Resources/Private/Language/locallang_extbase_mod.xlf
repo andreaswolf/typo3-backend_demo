@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" source-language="en" target-language="en" datatype="plaintext">
+        <body>
+            <!-- The label for the main menu item -->
+            <trans-unit id="mlang_tabs_tab">
+                <source>Extbase demo mod</source>
+            </trans-unit>
+            <!-- The tooltip for the main menu item -->
+            <trans-unit id="mlang_labels_tablabel">
+                <source>Extbase Demo module</source>
+            </trans-unit>
+            <!-- The description shown on the main page -->
+            <trans-unit id="mlang_labels_tabdescr">
+                <source>The Extbase demo module description.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

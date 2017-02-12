@@ -31,6 +31,7 @@
         // this key is e.g. used for routing requests to the backend form
         'name' => 'system_BackendDemo',
 
+        // this array is actually a bit more complicated than it should be; TODO where is this information processed?
         'labels' => [
             'tabs_images' => [
                 // the icon for the module menu item
@@ -42,5 +43,37 @@
             //   - mlang_tabs_tab
             'll_ref' => 'LLL:EXT:backend_demo/Resources/Private/Language/locallang_mod.xlf',
         ],
+    ]
+);
+
+// Registering the Extbase module
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+    // The extension name (Vendor.ExtensionKey)
+    'AndreasWolf.BackendDemo',
+
+    // the main module
+    // the extension key, main module and sub module form the namespace for parameters
+    //  => tx_backenddemo_system_backenddemoextbasebackenddemo
+    //  => tx_<extkey>_<main module>_<extkey><sub module>
+    // this is directly derived from the module key "M": system_BackendDemoExtbasebackenddemo
+    'system',
+
+    // the sub module
+    'ExtbaseBackendDemo',
+
+    // place this module after the first module
+    'after:BackendDemo',
+
+    // the controllers and their actions enabled for this module; actions not available here will trigger an error
+    // when called;
+    // there is only one array of actions as all actions in backend modules are uncached
+    [
+        'ExtbaseModule' => 'demo'
+    ],
+
+    [
+        'access' => 'admin',
+        'icon' => 'EXT:setup/Resources/Public/Icons/module-setup.svg',
+        'labels' => 'LLL:EXT:backend_demo/Resources/Private/Language/locallang_extbase_mod.xlf',
     ]
 );
