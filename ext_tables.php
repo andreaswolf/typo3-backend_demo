@@ -68,7 +68,7 @@
     // when called;
     // there is only one array of actions as all actions in backend modules are uncached
     [
-        'ExtbaseModule' => 'demo'
+        'ExtbaseModule' => 'demo, second'
     ],
 
     [

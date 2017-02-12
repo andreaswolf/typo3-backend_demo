@@ -11,4 +11,9 @@ class ExtbaseModuleController extends ActionController
         //
     }
 
+    public function secondAction()
+    {
+        //
+    }
+
 }
