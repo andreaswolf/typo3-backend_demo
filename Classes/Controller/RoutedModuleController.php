@@ -23,13 +23,14 @@ class RoutedModuleController
      */
     public function processRequest(ServerRequestInterface $request, ResponseInterface $response)
     {
-        /** @var StandaloneView $template */
-        $template = GeneralUtility::makeInstance(StandaloneView::class);
-        $template->setTemplatePathAndFilename(ExtensionManagementUtility::extPath('backend_demo',
-            'Resources/Private/Templates/BackendDemo/Main.html'));
+        /** @var StandaloneView $view */
+        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $view->setLayoutRootPaths([ExtensionManagementUtility::extPath('backend_demo', 'Resources/Private/Layouts/')]);
+        $view->setTemplateRootPaths([ExtensionManagementUtility::extPath('backend_demo', 'Resources/Private/Templates/BackendDemo/')]);
+        $view->setTemplate('Main');
 
         // The response object is immutable as per PSR-7. Therefore we must return it here
-        $response->getBody()->write($template->render());
+        $response->getBody()->write($view->render());
         return $response;
     }
 
