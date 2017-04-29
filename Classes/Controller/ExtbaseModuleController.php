@@ -2,8 +2,10 @@
 namespace AndreasWolf\BackendDemo\Controller;
 
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -54,7 +56,13 @@ class ExtbaseModuleController extends ActionController
     public function listAction()
     {
         if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 8007000) {
-            // TODO implement
+            /** @var DatabaseConnection $db */
+            $db = $GLOBALS['TYPO3_DB'];
+
+            $rows = $db->exec_SELECTgetRows(
+                '*', 'tt_content', '',
+                '', 'tstamp DESC', '0, 10'
+            );
         } else {
             /** @var ConnectionPool $connectionPool */
             $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
@@ -85,8 +93,8 @@ class ExtbaseModuleController extends ActionController
                 $rows[] = $row;
             }
 
-            $this->view->assign('rows', $rows);
         }
+        $this->view->assign('rows', $rows);
     }
 
 }
