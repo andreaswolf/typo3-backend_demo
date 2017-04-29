@@ -1,0 +1,28 @@
+<f:layout name="WithBackendViewHelper" />
+
+<f:section name="headline">
+
+</f:section>
+
+<f:section name="content">
+    <table>
+        <thead>
+        <tr>
+            <th>uid</th>
+            <th>title</th>
+            <th>crdate</th>
+            <th>tstamp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <f:for each="{rows}" as="row">
+            <tr>
+                <td>{row.uid}</td>
+                <td>{row.header}</td>
+                <td>{row.crdate -> f:format.date(format: 'd.m.Y H:i')}</td>
+                <td>{row.tstamp -> f:format.date(format: 'd.m.Y H:i')}</td>
+            </tr>
+        </f:for>
+        </tbody>
+    </table>
+</f:section>
