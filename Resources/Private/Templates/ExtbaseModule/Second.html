@@ -5,7 +5,26 @@
 </f:section>
 
 <f:section name="content">
+    <script type="text/javascript">
+        $(function() {
+          var endpointUrl = TYPO3.settings.ajaxUrls['backenddemo_helloworld'];
+
+          if (!endpointUrl) {
+            console.error("Could not fetch endpoint URL");
+          } else {
+            $('#ajax-status').html('Fetching value');
+            $.ajax(endpointUrl).done(function(data) {
+                $('#ajax-status').html('Fetching value… done: ' + data.text);
+              }).fail(function(xhr, status, error) {
+                $('#ajax-status').html('Fetching value… failed');
+                console.error(xhr, status, error);
+              });
+          }
+        })
+    </script>
     <p>Second demo action</p>
+
+    <p id="ajax-status"></p>
 
     <p><f:link.action action="demo">Back to first action</f:link.action></p>
 </f:section>
