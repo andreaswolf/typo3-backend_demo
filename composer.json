@@ -1,5 +1,6 @@
 {
   "name": "andreaswolf/backend-demo",
+  "type": "typo3-cms-extension",
   "description": "A backend demo extension",
   "license": "GPL-2.0+",
   "autoload": {
