@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
+use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -38,7 +39,11 @@ class ExtbaseModuleController extends ActionController
 
     public function demoAction()
     {
-        //
+        /** @var $logger \TYPO3\CMS\Core\Log\Logger */
+        $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
+
+        // the entry by default ends up in typo3temp/logs/typo3_<hash>.log
+        $logger->info("This is a test log entry.");
     }
 
     public function secondAction()
