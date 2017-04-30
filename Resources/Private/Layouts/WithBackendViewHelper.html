@@ -7,4 +7,18 @@
 
 <f:render section="headline" />
 
+<f:flashMessages as="flashMessages">
+	<div class="typo3-messages">
+		<f:for each="{flashMessages}" as="flashMessage">
+			<!-- The severity can unfortunately not automatically be converted to a string -->
+			<div class="alert alert-info">
+				<div class="media">
+					<div>{flashMessage.title}</div>
+					<div>{flashMessage.message}</div>
+				</div>
+			</div>
+		</f:for>
+	</div>
+</f:flashMessages>
+
 <f:render section="content" />

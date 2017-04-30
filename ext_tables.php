@@ -68,12 +68,13 @@
     // when called;
     // there is only one array of actions as all actions in backend modules are uncached
     [
-        'ExtbaseModule' => 'demo, second, list'
+        'ExtbaseModule' => 'demo, second, list, flashmessage'
     ],
 
     [
         'access' => 'admin',
         'icon' => 'EXT:setup/Resources/Public/Icons/module-setup.svg',
+        // the labels have fixed keys: mlang_tabs_tab, mlang_labels_tablabel, mlang_labels_tabdescr
         'labels' => 'LLL:EXT:backend_demo/Resources/Private/Language/locallang_extbase_mod.xlf',
     ]
 );

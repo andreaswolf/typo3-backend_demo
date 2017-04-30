@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -100,6 +101,17 @@ class ExtbaseModuleController extends ActionController
 
         }
         $this->view->assign('rows', $rows);
+    }
+
+    public function flashmessageAction()
+    {
+        $this->addFlashMessage(
+            'This is a demo flash message added by another action.',
+            'The message title',
+            AbstractMessage::INFO
+        );
+
+        $this->forward('demo');
     }
 
 }
