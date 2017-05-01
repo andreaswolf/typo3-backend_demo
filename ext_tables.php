@@ -51,17 +51,19 @@
     // The extension name (Vendor.ExtensionKey)
     'AndreasWolf.BackendDemo',
 
-    // the main module
-    // the extension key, main module and sub module form the namespace for parameters
+    // the extension key, main module and sub module form the namespace for module parameters
     //  => tx_backenddemo_system_backenddemoextbasebackenddemo
     //  => tx_<extkey>_<main module>_<extkey><sub module>
-    // this is directly derived from the module key "M": system_BackendDemoExtbasebackenddemo
+    // the module key "M" used by the backend routing is also directly derived from this information; in our case, it is
+    // "system_BackendDemoExtbasebackenddemo"
+
+    // the main module
     'system',
 
     // the sub module
     'ExtbaseBackendDemo',
 
-    // place this module after the first module
+    // place this module after the first module defined above
     'after:BackendDemo',
 
     // the controllers and their actions enabled for this module; actions not available here will trigger an error
@@ -72,9 +74,17 @@
     ],
 
     [
+        // alternatively defined 'user,group' (or one of these only) to allow restricting access on user and/or group
+        // basis
         'access' => 'admin',
+
         'icon' => 'EXT:setup/Resources/Public/Icons/module-setup.svg',
         // the labels have fixed keys: mlang_tabs_tab, mlang_labels_tablabel, mlang_labels_tabdescr
+        // (works exactly like the ll_ref in normal modules, see above)
         'labels' => 'LLL:EXT:backend_demo/Resources/Private/Language/locallang_extbase_mod.xlf',
+
+        // access to workspaces could also be configured here:
+        //   'workspaces' => 'online, offline, custom'
+        // 'online' is the default live workspace, 'offline' the default draft WS and 'custom' are all other WSes
     ]
 );
