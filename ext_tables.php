@@ -86,5 +86,14 @@
         // access to workspaces could also be configured here:
         //   'workspaces' => 'online, offline, custom'
         // 'online' is the default live workspace, 'offline' the default draft WS and 'custom' are all other WSes
+
+        // this controls if the page or file tree is shown
+        // this setup here will completely hide the tree even if the module is situated in "web", where the page
+        // tree would be shown; an example is the module in "EXT:forms"
+        'navigationComponentId' => '',
+        'inheritNavigationComponentFromMainModule' => false
+        // to show the page tree, replace the two lines by
+        //   'navigationComponentId' => 'typo3-pagetree'
+        // "typo3-pagetree" is the DOM ID of the page tree.
     ]
 );
