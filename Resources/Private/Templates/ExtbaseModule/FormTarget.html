@@ -1,0 +1,15 @@
+<f:layout name="WithBackendViewHelper" />
+
+<f:section name="headline">
+    <h1>Form results!</h1>
+</f:section>
+
+<f:section name="content">
+    <p>Submitted form values (arrays will show up as blank, as we cannot detect them in the loop):</p>
+
+    <ul>
+    <f:for each="{fields}" as="value" key="field">
+        <li>{field} = {value}</li>
+    </f:for>
+    </ul>
+</f:section>

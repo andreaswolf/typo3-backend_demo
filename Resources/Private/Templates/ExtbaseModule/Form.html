@@ -1,0 +1,24 @@
+<f:layout name="WithBackendViewHelper" />
+
+<f:section name="headline">
+
+</f:section>
+
+<f:section name="content">
+    <f:form action="formTarget">
+        <!-- we have to use the foo[bar] syntax here instead of foo.bar because we’re not dealing with an object,
+             but with a plain simple map -->
+        <p>The first field (foo): <f:form.textfield name="fields[foo]" /></p>
+        <p>Another field (bar): <f:form.textfield name="fields[bar]" /></p>
+
+        <p>An array of fields(baz):</p>
+        <ul>
+            <li><f:form.textfield name="fields[baz][]" /></li>
+            <li><f:form.textfield name="fields[baz][]" /></li>
+            <li><f:form.textfield name="fields[baz][]" /></li>
+            <li><f:form.textfield name="fields[baz][]" /></li>
+        </ul>
+
+        <f:form.submit value="Submit form" />
+    </f:form>
+</f:section>

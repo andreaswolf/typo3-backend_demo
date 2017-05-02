@@ -114,4 +114,16 @@ class ExtbaseModuleController extends ActionController
         $this->forward('demo');
     }
 
+    public function formAction()
+    {
+    }
+
+    /**
+     * @param array $fields
+     */
+    public function formTargetAction($fields)
+    {
+        $this->view->assign('fields', $fields);
+    }
+
 }
